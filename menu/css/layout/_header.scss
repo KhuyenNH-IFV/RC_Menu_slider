@@ -1,0 +1,21 @@
+/*======================================
+        Header
+======================================*/
+#header {
+    height: 75px;
+    position: fixed;
+    z-index: 99;
+    background: $color-a;
+    top: 0;
+    left: 0;
+    right: 0;
+    @extend %clearfix;
+    .logo-nav {
+        cursor: pointer;
+        position: absolute;
+        left: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: bold;
+    }
+}
