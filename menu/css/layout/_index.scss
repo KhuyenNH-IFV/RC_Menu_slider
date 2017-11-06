@@ -6,8 +6,16 @@
 /*====================================
             Grand menu
 =====================================*/
-body {
-    min-height: 150vh;
+.background-menu {
+    &.open {
+        z-index: 5;
+        background: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 }
 .gnav {
     transform: perspective(600px) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
@@ -18,10 +26,9 @@ body {
     top: 75px;
     left: 0;
     width: 27%;
-    min-height: 100vh;
     z-index: 9;
     bottom: 0;
-    background-color: #f1eeee;
+    background-color: #eee;
     color: #333;
     letter-spacing: 0.03em;
     padding: 40px 5%;
@@ -32,6 +39,41 @@ body {
     a {
         color: #333;
     }
+    .gnav-btn-icon {
+        z-index: 99999;
+        position: absolute;
+        left: -30px;
+        span {
+            z-index: 5;
+            position: relative;
+            background: gray;
+            top: -4px;
+            width: 11px;
+            height: 1px;
+            display: inline-block;
+            &:last-child {
+                position: absolute;
+                transform: rotate(90deg);
+                left: 0;
+                top: 6px;
+            }
+        }
+        &.light {
+            span {
+                background: #fff;
+            }
+            &:after {
+                content: "";
+                top: -9px;
+                left: -10px;
+                position: absolute;
+                background: #14375b;
+                border-radius: 50%;
+                width: 31px;
+                height: 31px;
+            }
+        }
+    }
     .group-level1 {
         position: relative;
         z-index: 3;
@@ -40,7 +82,6 @@ body {
             position: relative;
             display: block;
             width: 100%;
-            border-bottom: 1px solid lightblue;
             > a,
             > span {
                 position: relative;
@@ -81,7 +122,6 @@ body {
             position: relative;
             display: block;
             width: 100%;
-            border-bottom: 1px solid lightblue;
             > a,
             > span {
                 position: relative;
@@ -100,7 +140,7 @@ body {
     .gnav-sub-level3 {
         position: absolute;
         top: 4%;
-        left: 25%;
+        left: 15%;
         li {
         	opacity: 0;
         	transform: translateX(-1em);
@@ -109,7 +149,6 @@ body {
             position: relative;
             display: block;
             width: 100%;
-            border-bottom: 1px solid lightblue;
             > a,
             > span {
                 position: relative;
@@ -121,87 +160,68 @@ body {
         }
     }
     .open-items {
+        z-index: 9;
         li {
             opacity: 1;
-            transform: translateX(0)
+            transform: translateX(0);
             &:nth-of-type(1) {
-                -webkit-transition-delay: 50ms;
                 transition-delay: 50ms;
             }
             &:nth-of-type(2) {
-                -webkit-transition-delay: 0.1s;
                 transition-delay: 0.1s;
             }
             &:nth-of-type(3) {
-                -webkit-transition-delay: 0.15s;
                 transition-delay: 0.15s;
             }
             &:nth-of-type(4) {
-                -webkit-transition-delay: 0.2s;
                 transition-delay: 0.2s;
             }
             &:nth-of-type(5) {
-                -webkit-transition-delay: 0.25s;
                 transition-delay: 0.25s;
             }
             &:nth-of-type(6) {
-                -webkit-transition-delay: 0.3s;
                 transition-delay: 0.3s;
             }
             &:nth-of-type(7) {
-                -webkit-transition-delay: 0.35s;
                 transition-delay: 0.35s;
             }
             &:nth-of-type(8) {
-                -webkit-transition-delay: 0.4s;
                 transition-delay: 0.4s;
             }
             &:nth-of-type(9) {
-                -webkit-transition-delay: 0.45s;
                 transition-delay: 0.45s;
             }
             &:nth-of-type(10) {
-                -webkit-transition-delay: 0.5s;
                 transition-delay: 0.5s;
             }
             &:nth-of-type(11) {
-                -webkit-transition-delay: 0.55s;
                 transition-delay: 0.55s;
             }
             &:nth-of-type(12) {
-                -webkit-transition-delay: 0.6s;
                 transition-delay: 0.6s;
             }
             &:nth-of-type(13) {
-                -webkit-transition-delay: 0.65s;
                 transition-delay: 0.65s;
             }
             &:nth-of-type(14) {
-                -webkit-transition-delay: 0.7s;
                 transition-delay: 0.7s;
             }
             &:nth-of-type(15) {
-                -webkit-transition-delay: 0.75s;
                 transition-delay: 0.75s;
             }
             &:nth-of-type(16) {
-                -webkit-transition-delay: 0.8s;
                 transition-delay: 0.8s;
             }
             &:nth-of-type(17) {
-                -webkit-transition-delay: 0.85s;
                 transition-delay: 0.85s;
             }
             &:nth-of-type(18) {
-                -webkit-transition-delay: 0.9s;
                 transition-delay: 0.9s;
             }
             &:nth-of-type(19) {
-                -webkit-transition-delay: 0.95s;
                 transition-delay: 0.95s;
             }
             &:nth-of-type(20) {
-                -webkit-transition-delay: 1s;
                 transition-delay: 1s;
             }
         }
@@ -213,71 +233,102 @@ body {
 .effect-text:hover {
     transition-duration: 0ms;
     transition-delay: 0ms;
-    span {
-		animation-name: mouseonListItem;
-		animation-duration: .2s;
-		animation-timing-function: cubic-bezier(.785, .135, .15, .86);
-		animation-fill-mode: both;
-        color: #0446a1;
-        &:nth-of-type(1) {
-            transition-delay: 50ms;
-        }
-        &:nth-of-type(2) {
-            transition-delay: 0.1s;
-        }
-        &:nth-of-type(3) {
-            transition-delay: 0.15s;
-        }
-        &:nth-of-type(4) {
-            transition-delay: 0.2s;
-        }
-        &:nth-of-type(5) {
-            transition-delay: 0.25s;
-        }
-        &:nth-of-type(6) {
-            transition-delay: 0.3s;
-        }
-        &:nth-of-type(7) {
-            transition-delay: 0.35s;
-        }
-        &:nth-of-type(8) {
-            transition-delay: 0.4s;
-        }
-        &:nth-of-type(9) {
-            transition-delay: 0.45s;
-        }
-        &:nth-of-type(10) {
-            transition-delay: 0.5s;
-        }
-        &:nth-of-type(11) {
-            transition-delay: 0.55s;
-        }
-        &:nth-of-type(12) {
-            transition-delay: 0.6s;
-        }
-        &:nth-of-type(13) {
-            transition-delay: 0.65s;
-        }
-        &:nth-of-type(14) {
-            transition-delay: 0.7s;
-        }
-        &:nth-of-type(15) {
-            transition-delay: 0.75s;
-        }
-        &:nth-of-type(16) {
-            transition-delay: 0.8s;
-        }
-        &:nth-of-type(17) {
-            transition-delay: 0.85s;
-        }
-        &:nth-of-type(18) {
-            transition-delay: 0.9s;
-        }
-        &:nth-of-type(19) {
-            transition-delay: 0.95s;
-        }
-        &:nth-of-type(20) {
-            transition-delay: 1s;
+    .text-gnav {
+        span {
+    		animation-name: mouseonListItem;
+    		animation-duration: .2s;
+    		animation-timing-function: cubic-bezier(.785, .135, .15, .86);
+    		animation-fill-mode: both;
+            &:nth-of-type(1) {
+            	animation-delay: 0s
+            }
+            &:nth-of-type(2) {
+            	animation-delay: 20ms
+            }
+            &:nth-of-type(3) {
+            	animation-delay: 40ms
+            }
+            &:nth-of-type(4) {
+            	animation-delay: 60ms
+            }
+            &:nth-of-type(5) {
+            	animation-delay: 80ms
+            }
+            &:nth-of-type(6) {
+            	animation-delay: .1s
+            }
+            &:nth-of-type(7) {
+            	animation-delay: .12s
+            }
+            &:nth-of-type(8) {
+            	animation-delay: .14s
+            }
+            &:nth-of-type(9) {
+            	animation-delay: .16s
+            }
+            &:nth-of-type(10) {
+            	animation-delay: .18s
+            }
+            &:nth-of-type(11) {
+            	animation-delay: .2s
+            }
+            &:nth-of-type(12) {
+            	animation-delay: .22s
+            }
+            &:nth-of-type(13) {
+            	animation-delay: .24s
+            }
+            &:nth-of-type(14) {
+            	animation-delay: .26s
+            }
+            &:nth-of-type(15) {
+            	animation-delay: .28s
+            }
+            &:nth-of-type(16) {
+            	animation-delay: .3s
+            }
+            &:nth-of-type(17) {
+            	animation-delay: .32s
+            }
+            &:nth-of-type(18) {
+            	animation-delay: .34s
+            }
+            &:nth-of-type(19) {
+            	animation-delay: .36s
+            }
+            &:nth-of-type(20) {
+            	animation-delay: .38s
+            }
+            &:nth-of-type(21) {
+            	animation-delay: .4s
+            }
+            &:nth-of-type(22) {
+            	animation-delay: .42s
+            }
+            &:nth-of-type(23) {
+            	animation-delay: .44s
+            }
+            &:nth-of-type(24) {
+            	animation-delay: .46s
+            }
+            &:nth-of-type(25) {
+            	animation-delay: .48s
+            }
+            &:nth-of-type(26) {
+            	animation-delay: .5s
+            }
+            &:nth-of-type(27) {
+            	animation-delay: .52s
+            }
+            &:nth-of-type(28) {
+            	animation-delay: .54s
+            }
+            &:nth-of-type(29) {
+            	animation-delay: .56s
+            }
+            &:nth-of-type(30) {
+            	animation-delay: .58s
+            }
         }
     }
 }

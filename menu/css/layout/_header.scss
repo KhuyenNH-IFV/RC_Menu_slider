@@ -11,11 +11,117 @@
     right: 0;
     @extend %clearfix;
     .logo-nav {
+        float: left;
         cursor: pointer;
-        position: absolute;
-        left: 10%;
-        top: 50%;
-        transform: translateY(-50%);
+        width: 17%;
+        padding: 30px 5%;
+        color: #222;
         font-weight: bold;
+        &:hover {
+            .text-menu span {
+        		animation-name: mouseonButtonStr;
+        		animation-duration: .3s;
+        		animation-timing-function: cubic-bezier(.785, .135, .15, .86);
+        		animation-fill-mode: both;
+                &:nth-of-type(1) {
+            		animation-delay: 0s;
+            	}
+            	&:nth-of-type(2) {
+            		animation-delay: 30ms;
+            	}
+            	&:nth-of-type(3) {
+            		animation-delay: 60ms;
+            	}
+            	&:nth-of-type(4) {
+            		animation-delay: 90ms;
+            	}
+            }
+        }
+    }
+    .btn-menu-top {
+        position: relative;
+        span {
+            background: #222;
+            position: absolute;
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            top: 0;
+            left: -35px;
+            &:nth-child(2) {
+                top: 7px;
+            }
+            &:nth-child(3) {
+                top: 14px;
+            }
+        }
+        &.active {
+            span {
+                &:nth-child(1) {
+                    transform: rotate(45deg);
+                    top: 8px;
+                }
+                &:nth-child(3) {
+                    transform: rotate(-45deg);
+                    top: 8px;
+
+                }
+                &:nth-child(2) {
+                    display: none;
+                }
+            }
+        }
+    }
+    .bg-header {
+        float: left;
+        width: 66%;
+        position: relative;
+        height: 75px;
+        line-height: 75px;
+        font-size: 20px;
+        text-align: center;
+        color: #000;
+    	transform: scaleX(1);
+    	transform-origin: left;
+    	transition-duration: .6s;
+    	transition-timing-function: cubic-bezier(.075, .82, .165, 1);
+        background: yellow;
+        a {
+            color: #000;
+            margin: 0 20px;
+        }
+        &.closed {
+            transform: scaleX(0);
+        }
+        // &.open {
+        //     &:after {
+        //         content: "";
+        //         position: absolute;
+        //         background: pink;
+        //         top: 0;
+        //         left: 0;
+        //         right: 0;
+        //         height: 75px;
+        //
+        //     }
+        // }
+    }
+    .apply-header {
+        height: 100%;
+        width: 17%;
+        background: #14375b;
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a {
+            color: #fff;
+            padding: 30px 0 31px;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
     }
 }

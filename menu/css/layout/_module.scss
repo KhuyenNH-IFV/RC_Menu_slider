@@ -77,44 +77,52 @@ textarea {
     // }
 }
 
-
+/* Effect for text menu */
 @keyframes mouseonListItem {
 	0% {
 		opacity: 1;
 		color: #777;
-		transform: translateX(0)
+		transform: translateX(0);
 	}
 	49.9% {
 		opacity: 0;
 		color: #777;
-		transform: translateX(5px)
+		transform: translateX(5px);
 	}
 	50% {
 		opacity: 0;
 		color: #0446a1;
-		transform: translateX(-5px)
+		transform: translateX(-5px);
 	}
 	100% {
 		opacity: 1;
 		color: #0446a1;
-		transform: translateX(0)
+		transform: translateX(0);
 	}
 }
-@keyframes mouseoffListItem {
+/* Effect for button menu */
+@keyframes mouseonButtonStr {
 	0% {
 		opacity: 1;
-		color: #0446a1
+		transform: scale(1);
 	}
 	49.9% {
 		opacity: 0;
-		color: #0446a1
+		transform: translateX(5px) scale(.5);
 	}
 	50% {
 		opacity: 0;
-		color: #777
+		transform: translateX(-5px) scale(1.6);
 	}
 	100% {
 		opacity: 1;
-		color: #777
+		transform: scale(1);
 	}
+}
+
+
+
+
+body {
+    min-height: 150vh;
 }

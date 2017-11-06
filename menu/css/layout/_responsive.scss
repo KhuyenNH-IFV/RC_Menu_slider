@@ -1,35 +1,58 @@
 /*-----------------------
-        Responsive for device < 780px
+        Responsive for device < 768px
 -----------------------------------------*/
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 768px) {
+    #header {
+        .bg-header {
+            width: 65%;
+        }
+        .logo-nav {
+            width: 35%;
+        }
+        .text-menu {
+            padding-left: 35px;
+        }
+        .btn-menu-top {
+            span {
+                left: 0;
+            }
+        }
+    }
+    .gnav {
+        padding: 40px 4% 40px 6%;
+    }
+}
+@media screen and (max-width: 650px) {
     .is_pc {
         display: none;
     }
     .is_sp {
         display: inherit;
     }
-    /*------------------- Typography_SP -------------------*/
-    .title_h2 {
-        // font-size: 24px;
-        // color: $color-primary;
-        // line-height: 1.8;
-        // font-weight: bold;
-    }
-    .title_h3 {
-        // font-size: 24px;
-        // line-height: 1.8;
-        // color: $color-primary;
-        // font-weight: bold;
-    }
-    .title_h4 {
-        // font-size: 24px;
-        // color: $color-primary;
-        // line-height: 1.8;
-        // font-weight: bold;
-    }
-    .text {
-        // padding:
-        // font-size: ;
-        // color:
+    .gnav {
+        width: 60px;
+        .gnav-btn-icon {
+            left: calc(50% - 8px);
+        }
+        .group-list {
+            padding: 40px 0;
+        }
+        .group-level2 {
+            .gnav-btn-icon {
+                left: 8px;
+            }
+        }
+        .gnav-sub-level2,
+        .group-level1 {
+            .text-gnav {
+                display: none;
+            }
+        }
+        .group-level3 {
+            width: 300px;
+            .gnav-sub-level3 {
+                left: 20px;
+            }
+        }
     }
 }

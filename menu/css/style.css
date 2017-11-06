@@ -115,6 +115,7 @@ button:focus, input:focus, a:focus {
 }
 
 /*------------------- List -------------------*/
+/* Effect for text menu */
 @-webkit-keyframes mouseonListItem {
   0% {
     opacity: 1;
@@ -168,42 +169,54 @@ button:focus, input:focus, a:focus {
   }
 }
 
-@-webkit-keyframes mouseoffListItem {
+/* Effect for button menu */
+@-webkit-keyframes mouseonButtonStr {
   0% {
     opacity: 1;
-    color: #0446a1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
   49.9% {
     opacity: 0;
-    color: #0446a1;
+    -webkit-transform: translateX(5px) scale(0.5);
+    transform: translateX(5px) scale(0.5);
   }
   50% {
     opacity: 0;
-    color: #777;
+    -webkit-transform: translateX(-5px) scale(1.6);
+    transform: translateX(-5px) scale(1.6);
   }
   100% {
     opacity: 1;
-    color: #777;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes mouseonButtonStr {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  49.9% {
+    opacity: 0;
+    -webkit-transform: translateX(5px) scale(0.5);
+    transform: translateX(5px) scale(0.5);
+  }
+  50% {
+    opacity: 0;
+    -webkit-transform: translateX(-5px) scale(1.6);
+    transform: translateX(-5px) scale(1.6);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
 }
 
-@keyframes mouseoffListItem {
-  0% {
-    opacity: 1;
-    color: #0446a1;
-  }
-  49.9% {
-    opacity: 0;
-    color: #0446a1;
-  }
-  50% {
-    opacity: 0;
-    color: #777;
-  }
-  100% {
-    opacity: 1;
-    color: #777;
-  }
+body {
+  min-height: 150vh;
 }
 
 /*======================================
@@ -220,14 +233,147 @@ button:focus, input:focus, a:focus {
 }
 
 #header .logo-nav {
+  float: left;
   cursor: pointer;
-  position: absolute;
-  left: 10%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  width: 17%;
+  padding: 30px 5%;
+  color: #222;
   font-weight: bold;
+}
+
+#header .logo-nav:hover .text-menu span {
+  -webkit-animation-name: mouseonButtonStr;
+  animation-name: mouseonButtonStr;
+  -webkit-animation-duration: .3s;
+  animation-duration: .3s;
+  -webkit-animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+#header .logo-nav:hover .text-menu span:nth-of-type(1) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+#header .logo-nav:hover .text-menu span:nth-of-type(2) {
+  -webkit-animation-delay: 30ms;
+  animation-delay: 30ms;
+}
+
+#header .logo-nav:hover .text-menu span:nth-of-type(3) {
+  -webkit-animation-delay: 60ms;
+  animation-delay: 60ms;
+}
+
+#header .logo-nav:hover .text-menu span:nth-of-type(4) {
+  -webkit-animation-delay: 90ms;
+  animation-delay: 90ms;
+}
+
+#header .btn-menu-top {
+  position: relative;
+}
+
+#header .btn-menu-top span {
+  background: #222;
+  position: absolute;
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  top: 0;
+  left: -35px;
+}
+
+#header .btn-menu-top span:nth-child(2) {
+  top: 7px;
+}
+
+#header .btn-menu-top span:nth-child(3) {
+  top: 14px;
+}
+
+#header .btn-menu-top.active span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 8px;
+}
+
+#header .btn-menu-top.active span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 8px;
+}
+
+#header .btn-menu-top.active span:nth-child(2) {
+  display: none;
+}
+
+#header .bg-header {
+  float: left;
+  width: 66%;
+  position: relative;
+  height: 75px;
+  line-height: 75px;
+  font-size: 20px;
+  text-align: center;
+  color: #000;
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transform-origin: left;
+  -ms-transform-origin: left;
+  transform-origin: left;
+  -webkit-transition-duration: .6s;
+  -o-transition-duration: .6s;
+  transition-duration: .6s;
+  -webkit-transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  -o-transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  background: yellow;
+}
+
+#header .bg-header a {
+  color: #000;
+  margin: 0 20px;
+}
+
+#header .bg-header.closed {
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+}
+
+#header .apply-header {
+  height: 100%;
+  width: 17%;
+  background: #14375b;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+#header .apply-header a {
+  color: #fff;
+  padding: 30px 0 31px;
+  text-align: center;
+  width: 100%;
+  display: block;
 }
 
 /*------------------------------------
@@ -238,8 +384,14 @@ button:focus, input:focus, a:focus {
 /*====================================
             Grand menu
 =====================================*/
-body {
-  min-height: 150vh;
+.background-menu.open {
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .gnav {
@@ -255,10 +407,9 @@ body {
   top: 75px;
   left: 0;
   width: 27%;
-  min-height: 100vh;
   z-index: 9;
   bottom: 0;
-  background-color: #f1eeee;
+  background-color: #eee;
   color: #333;
   letter-spacing: 0.03em;
   padding: 40px 5%;
@@ -276,6 +427,46 @@ body {
   color: #333;
 }
 
+.gnav .gnav-btn-icon {
+  z-index: 99999;
+  position: absolute;
+  left: -30px;
+}
+
+.gnav .gnav-btn-icon span {
+  z-index: 5;
+  position: relative;
+  background: gray;
+  top: -4px;
+  width: 11px;
+  height: 1px;
+  display: inline-block;
+}
+
+.gnav .gnav-btn-icon span:last-child {
+  position: absolute;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  left: 0;
+  top: 6px;
+}
+
+.gnav .gnav-btn-icon.light span {
+  background: #fff;
+}
+
+.gnav .gnav-btn-icon.light:after {
+  content: "";
+  top: -9px;
+  left: -10px;
+  position: absolute;
+  background: #14375b;
+  border-radius: 50%;
+  width: 31px;
+  height: 31px;
+}
+
 .gnav .group-level1 {
   position: relative;
   z-index: 3;
@@ -286,7 +477,6 @@ body {
   position: relative;
   display: block;
   width: 100%;
-  border-bottom: 1px solid lightblue;
 }
 
 .gnav .group-level1 > li > a,
@@ -344,7 +534,6 @@ body {
   position: relative;
   display: block;
   width: 100%;
-  border-bottom: 1px solid lightblue;
 }
 
 .gnav .gnav-sub-level2 li > a,
@@ -366,7 +555,7 @@ body {
 .gnav .gnav-sub-level3 {
   position: absolute;
   top: 4%;
-  left: 25%;
+  left: 15%;
 }
 
 .gnav .gnav-sub-level3 li {
@@ -380,7 +569,6 @@ body {
   position: relative;
   display: block;
   width: 100%;
-  border-bottom: 1px solid lightblue;
 }
 
 .gnav .gnav-sub-level3 li > a,
@@ -392,14 +580,18 @@ body {
   vertical-align: middle;
 }
 
-.gnav .open-items li {
-  opacity: 1;
-  -webkit-transform: translateX(0) .gnav .open-items li;
-  -ms-transform: translateX(0) .gnav .open-items li;
-  transform: translateX(0) .gnav .open-items li;
+.gnav .open-items {
+  z-index: 9;
 }
 
-.gnav .open-items li :nth-of-type(1) {
+.gnav .open-items li {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.gnav .open-items li:nth-of-type(1) {
   -webkit-transition-delay: 50ms;
   -o-transition-delay: 50ms;
   transition-delay: 50ms;
@@ -529,7 +721,7 @@ body {
   transition-delay: 0ms;
 }
 
-.effect-text:hover span {
+.effect-text:hover .text-gnav span {
   -webkit-animation-name: mouseonListItem;
   animation-name: mouseonListItem;
   -webkit-animation-duration: .2s;
@@ -538,127 +730,156 @@ body {
   animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  color: #0446a1;
 }
 
-.effect-text:hover span:nth-of-type(1) {
-  -webkit-transition-delay: 50ms;
-  -o-transition-delay: 50ms;
-  transition-delay: 50ms;
+.effect-text:hover .text-gnav span:nth-of-type(1) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
 }
 
-.effect-text:hover span:nth-of-type(2) {
-  -webkit-transition-delay: 0.1s;
-  -o-transition-delay: 0.1s;
-  transition-delay: 0.1s;
+.effect-text:hover .text-gnav span:nth-of-type(2) {
+  -webkit-animation-delay: 20ms;
+  animation-delay: 20ms;
 }
 
-.effect-text:hover span:nth-of-type(3) {
-  -webkit-transition-delay: 0.15s;
-  -o-transition-delay: 0.15s;
-  transition-delay: 0.15s;
+.effect-text:hover .text-gnav span:nth-of-type(3) {
+  -webkit-animation-delay: 40ms;
+  animation-delay: 40ms;
 }
 
-.effect-text:hover span:nth-of-type(4) {
-  -webkit-transition-delay: 0.2s;
-  -o-transition-delay: 0.2s;
-  transition-delay: 0.2s;
+.effect-text:hover .text-gnav span:nth-of-type(4) {
+  -webkit-animation-delay: 60ms;
+  animation-delay: 60ms;
 }
 
-.effect-text:hover span:nth-of-type(5) {
-  -webkit-transition-delay: 0.25s;
-  -o-transition-delay: 0.25s;
-  transition-delay: 0.25s;
+.effect-text:hover .text-gnav span:nth-of-type(5) {
+  -webkit-animation-delay: 80ms;
+  animation-delay: 80ms;
 }
 
-.effect-text:hover span:nth-of-type(6) {
-  -webkit-transition-delay: 0.3s;
-  -o-transition-delay: 0.3s;
-  transition-delay: 0.3s;
+.effect-text:hover .text-gnav span:nth-of-type(6) {
+  -webkit-animation-delay: .1s;
+  animation-delay: .1s;
 }
 
-.effect-text:hover span:nth-of-type(7) {
-  -webkit-transition-delay: 0.35s;
-  -o-transition-delay: 0.35s;
-  transition-delay: 0.35s;
+.effect-text:hover .text-gnav span:nth-of-type(7) {
+  -webkit-animation-delay: .12s;
+  animation-delay: .12s;
 }
 
-.effect-text:hover span:nth-of-type(8) {
-  -webkit-transition-delay: 0.4s;
-  -o-transition-delay: 0.4s;
-  transition-delay: 0.4s;
+.effect-text:hover .text-gnav span:nth-of-type(8) {
+  -webkit-animation-delay: .14s;
+  animation-delay: .14s;
 }
 
-.effect-text:hover span:nth-of-type(9) {
-  -webkit-transition-delay: 0.45s;
-  -o-transition-delay: 0.45s;
-  transition-delay: 0.45s;
+.effect-text:hover .text-gnav span:nth-of-type(9) {
+  -webkit-animation-delay: .16s;
+  animation-delay: .16s;
 }
 
-.effect-text:hover span:nth-of-type(10) {
-  -webkit-transition-delay: 0.5s;
-  -o-transition-delay: 0.5s;
-  transition-delay: 0.5s;
+.effect-text:hover .text-gnav span:nth-of-type(10) {
+  -webkit-animation-delay: .18s;
+  animation-delay: .18s;
 }
 
-.effect-text:hover span:nth-of-type(11) {
-  -webkit-transition-delay: 0.55s;
-  -o-transition-delay: 0.55s;
-  transition-delay: 0.55s;
+.effect-text:hover .text-gnav span:nth-of-type(11) {
+  -webkit-animation-delay: .2s;
+  animation-delay: .2s;
 }
 
-.effect-text:hover span:nth-of-type(12) {
-  -webkit-transition-delay: 0.6s;
-  -o-transition-delay: 0.6s;
-  transition-delay: 0.6s;
+.effect-text:hover .text-gnav span:nth-of-type(12) {
+  -webkit-animation-delay: .22s;
+  animation-delay: .22s;
 }
 
-.effect-text:hover span:nth-of-type(13) {
-  -webkit-transition-delay: 0.65s;
-  -o-transition-delay: 0.65s;
-  transition-delay: 0.65s;
+.effect-text:hover .text-gnav span:nth-of-type(13) {
+  -webkit-animation-delay: .24s;
+  animation-delay: .24s;
 }
 
-.effect-text:hover span:nth-of-type(14) {
-  -webkit-transition-delay: 0.7s;
-  -o-transition-delay: 0.7s;
-  transition-delay: 0.7s;
+.effect-text:hover .text-gnav span:nth-of-type(14) {
+  -webkit-animation-delay: .26s;
+  animation-delay: .26s;
 }
 
-.effect-text:hover span:nth-of-type(15) {
-  -webkit-transition-delay: 0.75s;
-  -o-transition-delay: 0.75s;
-  transition-delay: 0.75s;
+.effect-text:hover .text-gnav span:nth-of-type(15) {
+  -webkit-animation-delay: .28s;
+  animation-delay: .28s;
 }
 
-.effect-text:hover span:nth-of-type(16) {
-  -webkit-transition-delay: 0.8s;
-  -o-transition-delay: 0.8s;
-  transition-delay: 0.8s;
+.effect-text:hover .text-gnav span:nth-of-type(16) {
+  -webkit-animation-delay: .3s;
+  animation-delay: .3s;
 }
 
-.effect-text:hover span:nth-of-type(17) {
-  -webkit-transition-delay: 0.85s;
-  -o-transition-delay: 0.85s;
-  transition-delay: 0.85s;
+.effect-text:hover .text-gnav span:nth-of-type(17) {
+  -webkit-animation-delay: .32s;
+  animation-delay: .32s;
 }
 
-.effect-text:hover span:nth-of-type(18) {
-  -webkit-transition-delay: 0.9s;
-  -o-transition-delay: 0.9s;
-  transition-delay: 0.9s;
+.effect-text:hover .text-gnav span:nth-of-type(18) {
+  -webkit-animation-delay: .34s;
+  animation-delay: .34s;
 }
 
-.effect-text:hover span:nth-of-type(19) {
-  -webkit-transition-delay: 0.95s;
-  -o-transition-delay: 0.95s;
-  transition-delay: 0.95s;
+.effect-text:hover .text-gnav span:nth-of-type(19) {
+  -webkit-animation-delay: .36s;
+  animation-delay: .36s;
 }
 
-.effect-text:hover span:nth-of-type(20) {
-  -webkit-transition-delay: 1s;
-  -o-transition-delay: 1s;
-  transition-delay: 1s;
+.effect-text:hover .text-gnav span:nth-of-type(20) {
+  -webkit-animation-delay: .38s;
+  animation-delay: .38s;
+}
+
+.effect-text:hover .text-gnav span:nth-of-type(21) {
+  -webkit-animation-delay: .4s;
+  animation-delay: .4s;
+}
+
+.effect-text:hover .text-gnav span:nth-of-type(22) {
+  -webkit-animation-delay: .42s;
+  animation-delay: .42s;
+}
+
+.effect-text:hover .text-gnav span:nth-of-type(23) {
+  -webkit-animation-delay: .44s;
+  animation-delay: .44s;
+}
+
+.effect-text:hover .text-gnav span:nth-of-type(24) {
+  -webkit-animation-delay: .46s;
+  animation-delay: .46s;
+}
+
+.effect-text:hover .text-gnav span:nth-of-type(25) {
+  -webkit-animation-delay: .48s;
+  animation-delay: .48s;
+}
+
+.effect-text:hover .text-gnav span:nth-of-type(26) {
+  -webkit-animation-delay: .5s;
+  animation-delay: .5s;
+}
+
+.effect-text:hover .text-gnav span:nth-of-type(27) {
+  -webkit-animation-delay: .52s;
+  animation-delay: .52s;
+}
+
+.effect-text:hover .text-gnav span:nth-of-type(28) {
+  -webkit-animation-delay: .54s;
+  animation-delay: .54s;
+}
+
+.effect-text:hover .text-gnav span:nth-of-type(29) {
+  -webkit-animation-delay: .56s;
+  animation-delay: .56s;
+}
+
+.effect-text:hover .text-gnav span:nth-of-type(30) {
+  -webkit-animation-delay: .58s;
+  animation-delay: .58s;
 }
 
 /*======================================
@@ -697,14 +918,53 @@ body {
 }
 
 /*-----------------------
-        Responsive for device < 780px
+        Responsive for device < 768px
 -----------------------------------------*/
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 768px) {
+  #header .bg-header {
+    width: 65%;
+  }
+  #header .logo-nav {
+    width: 35%;
+  }
+  #header .text-menu {
+    padding-left: 35px;
+  }
+  #header .btn-menu-top span {
+    left: 0;
+  }
+  .gnav {
+    padding: 40px 4% 40px 6%;
+  }
+}
+
+@media screen and (max-width: 650px) {
   .is_pc {
     display: none;
   }
   .is_sp {
     display: inherit;
   }
-  /*------------------- Typography_SP -------------------*/
+  .gnav {
+    width: 60px;
+  }
+  .gnav .gnav-btn-icon {
+    left: calc(50% - 8px);
+  }
+  .gnav .group-list {
+    padding: 40px 0;
+  }
+  .gnav .group-level2 .gnav-btn-icon {
+    left: 8px;
+  }
+  .gnav .gnav-sub-level2 .text-gnav,
+  .gnav .group-level1 .text-gnav {
+    display: none;
+  }
+  .gnav .group-level3 {
+    width: 300px;
+  }
+  .gnav .group-level3 .gnav-sub-level3 {
+    left: 20px;
+  }
 }
